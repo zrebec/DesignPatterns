@@ -20,6 +20,7 @@ public class Program {
 		Singleton number1 = Singleton.getSingletonInstance();
 		Singleton number2 = Singleton.getSingletonInstance();
 		Singleton number3 = Singleton.getSingletonInstance();
+		Singleton number4 = Singleton.getSingletonInstance();
 		
 		
 		/**
@@ -28,6 +29,7 @@ public class Program {
 		System.out.println(number1.getSingletonRandomNumber());
 		System.out.println(number2.getSingletonRandomNumber());
 		System.out.println(number3.getSingletonRandomNumber());
+		System.out.println(number4.getSingletonRandomNumber());
 		
 	}
 	
