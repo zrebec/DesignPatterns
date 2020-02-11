@@ -35,8 +35,9 @@ public class Program {
 		 * 
 		 */
 		
-		Enemy enemy = null;
+		EnemyFactory enemyFactory = new EnemyFactory();
 		Scanner userInput = new Scanner(System.in);
+		Enemy enemy = null;
 		
 		// TODO Make more heroes with different attribute values (Speed / Health / Regeneration)
 		Hero hero = new Hero();
@@ -49,7 +50,7 @@ public class Program {
 			if(userInput.hasNextLine()) {
 				
 				String typeOfEnemy = userInput.nextLine();
-				enemy = EnemyFactory.makeEnemy(typeOfEnemy);
+				enemy = enemyFactory.makeEnemy(typeOfEnemy);
 				
 			}
 			

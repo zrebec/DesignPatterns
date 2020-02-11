@@ -2,7 +2,7 @@ package sk.zrebec.learn.java.designpatterns.factory;
 
 public class EnemyFactory {
 	
-	public static Enemy makeEnemy(String enemyOption) {
+	public Enemy makeEnemy(String enemyOption) {
 		
 		switch (enemyOption) {
 		case "T":
