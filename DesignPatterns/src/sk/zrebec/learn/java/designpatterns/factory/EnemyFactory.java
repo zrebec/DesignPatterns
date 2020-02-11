@@ -4,7 +4,7 @@ public class EnemyFactory {
 	
 	public Enemy makeEnemy(String enemyOption) {
 		
-		switch (enemyOption) {
+		switch (enemyOption.toUpperCase()) {
 		case "T":
 			return new Trooper();
 		case "R":

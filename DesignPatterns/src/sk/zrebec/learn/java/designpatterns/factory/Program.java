@@ -44,7 +44,7 @@ public class Program {
 		
 		
 		while (hero.getHealth() >= 0) {
-			System.out.println("What kind of enemy should attack? (T / R / Z)");
+			System.out.println("What kind of enemy should attack? (T / R / Z / F)");
 			
 			
 			if(userInput.hasNextLine()) {
