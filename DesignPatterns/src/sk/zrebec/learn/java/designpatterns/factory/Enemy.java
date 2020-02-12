@@ -34,19 +34,19 @@ public abstract class Enemy {
 	
 	public void followHero() { 
 		
-		System.out.println(getName() + " is following the hero!");
+		System.out.println(getName() + " and following the hero!");
 		
 	}
 	
 	public void displayEnemy() {
 		
-		System.out.println(getName() + " spawns");
+		System.out.print(getName() + " spawns");
 		
 	}
 	
 	public void enemyAttacks() {
 		
-		System.out.println(getName() + " attacking and does " + getDamage() + " points of damage!");
+		System.out.println(getName() + " is attacking and does " + getDamage() + " points of damage!");
 		
 	}
 	
