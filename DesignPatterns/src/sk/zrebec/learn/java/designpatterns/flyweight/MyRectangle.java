@@ -11,7 +11,7 @@ public class MyRectangle {
 	/**
 	 * FlyWeight constructor prepare rectangle much faster
 	 */
-	
+
 	public MyRectangle(Color color) {
 		this.color = color;
 	}
@@ -20,7 +20,7 @@ public class MyRectangle {
 		g.setColor(color);
 		g.fillRect(upperX, upperY, lowerX, lowerY);
 	}
-	
+
 	
 	/*
 	 * Classic constructor returns prepare rectangle for draw (set color and coordinates)
