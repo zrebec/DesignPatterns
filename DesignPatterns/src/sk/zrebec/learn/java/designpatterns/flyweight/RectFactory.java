@@ -42,7 +42,7 @@ public class RectFactory {
 			rect = new MyRectangle(color);
 			rectsByColor.put(color, rect);
 		}
-		
+
 		return rect;
 		
 	}
