@@ -21,7 +21,7 @@ import java.util.Random;
  * THINK: Also you can use final reserve word in Singleton initialisation.
  *        private static final Singleton singletonInstance = new Singleton();
  *        Then you must remove initialisation on Singleton in getInstance method
- * 
+ *
  * @author friskyfox
  * @version 1.0
  *
@@ -30,35 +30,30 @@ public class Singleton {
 
 	private static Singleton singletonInstance = null;
 	private int singletonNumber;
-	
-	/**
-	 * This is Singleton constructor. It must be private and return
-	 * value
-	 */
+
+
+	//This is Singleton constructor. It must be private and return value
 	private Singleton() {
 		Random seed = new Random(new Date().getTime());
-		
+
 		// This causes that 0 never will be returned
 		singletonNumber = seed.nextInt(50 - 1) + 1;
 	}
-	
+
 	/**
 	 * This method return instance of singleton
 	 * @return instance of singleton
 	 */
 	public static Singleton getSingletonInstance() {
-		
-		
-		/**
-		 *  If singleton was never used before, that means it is still null,
-		 *  we can initialise it here
-		 */
-		if(singletonInstance == null) {
+
+
+		//If singleton was never used before, that means it is still null, we can initialise it here
+		if (singletonInstance == null) {
 			singletonInstance = new Singleton();
 		}
 		
-		/**
-		 * Otherwise it returns the same instance 
+		/*
+		  Otherwise it returns the same instance
 		 */
 		return singletonInstance;
 	}

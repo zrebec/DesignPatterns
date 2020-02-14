@@ -38,70 +38,61 @@ public class Program extends JFrame {
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setTitle("FlyWeight Test");
-		
+
 		JPanel contentPane = new JPanel();
 		contentPane.setLayout(new BorderLayout());
-		
+
 		final JPanel drawingPanel = new JPanel();
-		
+
 		startDrawing = new JButton("Draw rectangles");
-		
+
 		contentPane.add(drawingPanel, BorderLayout.CENTER);
 		contentPane.add(startDrawing, BorderLayout.SOUTH);
-		
-		startDrawing.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				
-				Graphics g = drawingPanel.getGraphics();
-				
-				/**
-				 * Start measuring time
-				 */
-				long startTime = System.currentTimeMillis();
-				
-				for (int i = 0; i < 4000000; i++) {
+
+		startDrawing.addActionListener(e -> {
+
+
+			Graphics g = drawingPanel.getGraphics();
+
+			//Start measuring time
+			long startTime = System.currentTimeMillis();
+
+			for (int i = 0; i < 4000000; i++) {
 					
-					/**
-					 * This is classic method when we create a new instance of MyRectangle class
-					 * every single time.
-					 * 
-					 * Please, keep this 2 lines and classic
-					 * constructor commented in MyRectangle class and you will see that FlyWeight should 
-					 * be faster around 200 to 300% on average.
-					 * 
+					/*
+					  This is classic method when we create a new instance of MyRectangle class
+					  every single time.
+
+					  Please, keep this 2 lines and classic
+					  constructor commented in MyRectangle class and you will see that FlyWeight should
+					  be faster around 200 to 300% on average.
+
 					 */
-					//MyRectangle rect = new MyRectangle(getRandomColor(), getRandX(), getRandY(), getRandX(), getRandY());
-					//rect.draw(g);
+				//MyRectangle rect = new MyRectangle(getRandomColor(), getRandX(), getRandY(), getRandX(), getRandY());
+				//rect.draw(g);
 					
-					/**
-					 * This is FlyWeight method when we create a new instance of rectangle only if
-					 * color is changed. Otherwise just coordinates will be generated. Look at class
-					 * FlyWeightFactory for look how it works.
+					/*
+					  This is FlyWeight method when we create a new instance of rectangle only if
+					  color is changed. Otherwise just coordinates will be generated. Look at class
+					  FlyWeightFactory for look how it works.
 					 */
-					MyRectangle rect = RectFactory.getRect(getRandomColor());
-					rect.draw(g, getRandX(), getRandY(), getRandX(), getRandY());
-					
-					
-				}
-				
-				/**
-				 * Calculate memory consumption
-				 */
-				Runtime runtime = Runtime.getRuntime();
-				runtime.gc();
-				
-				long memory = runtime.totalMemory() - runtime.freeMemory();
-				System.out.println("Used memory in byes: " + memory);
-				System.out.println("Used memory in megabyes: " + bytesToMegabytes(memory));
-				
-				/**
-				 * End time measuring and return result to output
-				 */
-				System.out.println("This took " + (System.currentTimeMillis() - startTime) + " miliseconds");
-				
+				MyRectangle rect = RectFactory.getRect(getRandomColor());
+				rect.draw(g, getRandX(), getRandY(), getRandX(), getRandY());
+
+
 			}
+
+			//Calculate memory consumption
+			Runtime runtime = Runtime.getRuntime();
+			runtime.gc();
+
+			long memory = runtime.totalMemory() - runtime.freeMemory();
+			System.out.println("Used memory in byes: " + memory);
+			System.out.println("Used memory in megabyes: " + bytesToMegabytes(memory));
+
+			//End time measuring and return result to output
+			System.out.println("This took " + (System.currentTimeMillis() - startTime) + " milliseconds");
+
 		});
 		
 		this.add(contentPane);
