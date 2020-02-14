@@ -9,7 +9,7 @@ public class Program {
         Channel javaLearning = new Channel();
         ArrayList<Subscriber> subs = new ArrayList<>();
         // Initialize subscribe names
-        String[] names = {"Martin", "Fox", "Peter"};
+        String[] names = {"Martin", "Fox", "Peter", "Lucy"};
 
         // Create new Subscriber instance for each name
         for (String name : names) {
