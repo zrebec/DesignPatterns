@@ -3,7 +3,7 @@ package sk.zrebec.learn.java.designpatterns.observer;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Channel implements Subject {
+public class Channel implements IChannel {
 
     private List<Subscriber> subs = new ArrayList<>();
     private String title;

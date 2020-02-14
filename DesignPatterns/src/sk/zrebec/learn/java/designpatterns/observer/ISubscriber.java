@@ -1,6 +1,6 @@
 package sk.zrebec.learn.java.designpatterns.observer;
 
-public interface Observer {
+public interface ISubscriber {
 
     void update();
 

@@ -2,7 +2,7 @@ package sk.zrebec.learn.java.designpatterns.observer;
 
 import java.util.List;
 
-public interface Subject {
+public interface IChannel {
     void subscribe(Subscriber sub);
 
     void unSubscribe(Subscriber sub);
