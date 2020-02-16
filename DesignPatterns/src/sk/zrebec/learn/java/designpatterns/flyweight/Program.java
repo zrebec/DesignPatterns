@@ -57,7 +57,7 @@ public class Program extends JFrame {
 			//Start measuring time
 			long startTime = System.currentTimeMillis();
 
-			for (int i = 0; i < 4000000; i++) {
+			for (int i = 0; i < 4_000_000; i++) {
 					
 					/*
 					  This is classic method when we create a new instance of MyRectangle class
@@ -88,7 +88,7 @@ public class Program extends JFrame {
 
 			long memory = runtime.totalMemory() - runtime.freeMemory();
 			System.out.println("Used memory in byes: " + memory);
-			System.out.println("Used memory in megabyes: " + bytesToMegabytes(memory));
+			System.out.println("Used memory in megabytes: " + bytesToMegabytes(memory));
 
 			//End time measuring and return result to output
 			System.out.println("This took " + (System.currentTimeMillis() - startTime) + " milliseconds");

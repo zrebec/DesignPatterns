@@ -2,16 +2,16 @@ package sk.zrebec.learn.java.designpatterns.prototype;
 
 import java.util.ArrayList;
 
-public class Prototype {
-	
+public class Prototype implements IPrototype {
+
 	private ArrayList<Integer> primeNumbers = new ArrayList<>();
 	private int maxNumber;
-	
+
 	public Prototype(int i) {
 		maxNumber = i;
 		this.calculatePrimeNumbers();
 	}
-	
+
 	private void calculatePrimeNumbers() {
 		
 		for(int i = 2; i <= maxNumber; i++) {
@@ -33,4 +33,8 @@ public class Prototype {
 		return primeNumbers;
 	}
 
+	@Override
+	public Prototype getClone() throws CloneNotSupportedException {
+		return (Prototype) super.clone();
+	}
 }

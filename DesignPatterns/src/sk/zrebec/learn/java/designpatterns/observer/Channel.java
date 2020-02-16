@@ -28,7 +28,7 @@ public class Channel implements IChannel {
     @Override
     public void upload(String title) {
         this.title = title;
-        notifySubscribers();
+        this.notifySubscribers();
     }
 
     @Override
