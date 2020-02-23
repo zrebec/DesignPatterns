@@ -39,9 +39,8 @@ public class Prototype implements IPrototype {
 	}
 
 	@Override
-	public Prototype getClone() {
-		Prototype clone = new Prototype(maxNumber, true);
-		clone.primeNumbers.addAll(primeNumbers);
+	public Prototype getClone() throws CloneNotSupportedException {
+		Prototype clone = (Prototype) this.clone();
 		clone.primeNumbers.add(1000);
 		return clone;
 	}

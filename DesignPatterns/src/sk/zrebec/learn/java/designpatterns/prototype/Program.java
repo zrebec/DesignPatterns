@@ -18,8 +18,12 @@ public class Program {
 		startTime = System.nanoTime();
 
 		//Get clone
-		IPrototype clonePrimerNumberCalculator = primeNumberCalculator.getClone();
-		System.out.println("We have " + clonePrimerNumberCalculator.getPrimeNumbers().size() + " prime numbers in clone");
+		try {
+			IPrototype clonePrimerNumberCalculator = primeNumberCalculator.getClone();
+			System.out.println("We have " + clonePrimerNumberCalculator.getPrimeNumbers().size() + " prime numbers in clone");
+		} catch (CloneNotSupportedException e) {
+			System.out.println("Class doesn't support cloning yet");
+		}
 
 		endTime = System.nanoTime();
 		System.out.println("Clone ran ran " + ((endTime - startTime) / 1_000_000) + " milliseconds");
