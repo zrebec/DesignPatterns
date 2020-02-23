@@ -34,10 +34,10 @@ public class Program {
 
 		 */
 
-		EnemyFactory enemyFactory = new EnemyFactory();
+		final EnemyFactory enemyFactory = new EnemyFactory();
 		Scanner userInput = new Scanner(System.in);
 		Enemy enemy = null;
-		int safeDistance = 1000;
+		final short safeDistance = 1000;
 		int distance = 0;
 
 		// TODO Make more heroes with different attribute values (Speed / Health / Regeneration)

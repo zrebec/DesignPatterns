@@ -3,7 +3,6 @@ package sk.zrebec.learn.java.designpatterns.flyweight;
 import javax.swing.*;
 import java.awt.*;
 import java.util.Random;
-import java.awt.event.*;
 
 @SuppressWarnings("serial")
 public class Program extends JFrame {
@@ -51,34 +50,33 @@ public class Program extends JFrame {
 
 		startDrawing.addActionListener(e -> {
 
-
 			Graphics g = drawingPanel.getGraphics();
 
 			//Start measuring time
 			long startTime = System.currentTimeMillis();
+			MyRectangle rect;
 
 			for (int i = 0; i < 4_000_000; i++) {
-					
-					/*
-					  This is classic method when we create a new instance of MyRectangle class
-					  every single time.
 
-					  Please, keep this 2 lines and classic
-					  constructor commented in MyRectangle class and you will see that FlyWeight should
-					  be faster around 200 to 300% on average.
+				/*
+				  This is classic method when we create a new instance of MyRectangle class
+				  every single time.
 
-					 */
-				//MyRectangle rect = new MyRectangle(getRandomColor(), getRandX(), getRandY(), getRandX(), getRandY());
+				  Please, keep this 2 lines and classic
+				  constructor commented in MyRectangle class and you will see that FlyWeight should
+				  be faster around 200 to 300% on average.
+
+				 */
+				//rect = new MyRectangle(getRandomColor(), getRandX(), getRandY(), getRandX(), getRandY());
 				//rect.draw(g);
 					
-					/*
-					  This is FlyWeight method when we create a new instance of rectangle only if
-					  color is changed. Otherwise just coordinates will be generated. Look at class
-					  FlyWeightFactory for look how it works.
-					 */
-				MyRectangle rect = RectFactory.getRect(getRandomColor());
+				/*
+				  This is FlyWeight method when we create a new instance of rectangle only if
+				  color is changed. Otherwise just coordinates will be generated. Look at class
+				  FlyWeightFactory for look how it works.
+				 */
+				rect = RectFactory.getRect(getRandomColor());
 				rect.draw(g, getRandX(), getRandY(), getRandX(), getRandY());
-
 
 			}
 

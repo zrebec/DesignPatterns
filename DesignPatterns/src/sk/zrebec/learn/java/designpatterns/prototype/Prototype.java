@@ -12,9 +12,13 @@ public class Prototype implements IPrototype {
 		this.calculatePrimeNumbers();
 	}
 
+	public Prototype(int i, boolean dontInitialize) {
+		if (!dontInitialize) new Prototype(i);
+	}
+
 	private void calculatePrimeNumbers() {
-		
-		for(int i = 2; i <= maxNumber; i++) {
+
+		for (int i = 2; i <= maxNumber; i++) {
 			boolean prime = true;
 			for (int j = 2; j < (i / 2 + 1); j++) {
 				if (i % j == 0) {
@@ -29,12 +33,16 @@ public class Prototype implements IPrototype {
 		}
 	}
 
+
 	public ArrayList<Integer> getPrimeNumbers() {
 		return primeNumbers;
 	}
 
 	@Override
-	public Prototype getClone() throws CloneNotSupportedException {
-		return (Prototype) super.clone();
+	public Prototype getClone() {
+		Prototype clone = new Prototype(maxNumber, true);
+		clone.primeNumbers.addAll(primeNumbers);
+		clone.primeNumbers.add(1000);
+		return clone;
 	}
 }
