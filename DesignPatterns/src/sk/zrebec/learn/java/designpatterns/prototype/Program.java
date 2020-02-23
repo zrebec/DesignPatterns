@@ -8,7 +8,7 @@ public class Program {
 		int primeNumbersIn = 200_000;
 
 		//Define Prototype and initialise max calculate size  in constructor
-		Prototype primeNumberCalculator = new Prototype(primeNumbersIn);
+		IPrototype primeNumberCalculator = new Prototype(primeNumbersIn);
 
 		long endTime = System.nanoTime();
 
@@ -18,7 +18,7 @@ public class Program {
 		startTime = System.nanoTime();
 
 		//Get clone
-		Prototype clonePrimerNumberCalculator = primeNumberCalculator.getClone();
+		IPrototype clonePrimerNumberCalculator = primeNumberCalculator.getClone();
 		System.out.println("We have " + clonePrimerNumberCalculator.getPrimeNumbers().size() + " prime numbers in clone");
 
 		endTime = System.nanoTime();
