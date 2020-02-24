@@ -9,8 +9,10 @@ public class MyRectangle {
 	//private int x, y, x2, y2;
 
 	/**
-	 * FlyWeight constructor prepare rectangle much faster
-	 */
+     * FlyWeight constructor prepare rectangle much faster
+     *
+     * @param color Color of rectangle
+     */
 	public MyRectangle(Color color) {
 		this.color = color;
 	}

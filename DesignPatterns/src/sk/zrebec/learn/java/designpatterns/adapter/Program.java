@@ -11,11 +11,11 @@ package sk.zrebec.learn.java.designpatterns.adapter;
  * adaptee
  * <p>
  * -----------      -------------------------
- * | CLIENT |   ->  | methodA() from target |
+ * | CLIENT |   -&gt;  | methodA() from target |
  * -----------     --------------------------
  * ^
  * --------------------------      --------------------------
- * | methodA() from adapter |  <-  | methodB() from adptee  |
+ * | methodA() from adapter |  &lt;-  | methodB() from adptee  |
  * --------------------------      --------------------------
  */
 public class Program {
