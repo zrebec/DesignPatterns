@@ -29,13 +29,14 @@ import java.awt.Color;
  *
  */
 
+
 public class RectFactory {
 
-	private static final HashMap<Color, MyRectangle> rectsByColor = new HashMap<Color, MyRectangle>();
+	private static final HashMap<Color, MyRectangle> rectsByColor = new HashMap<>();
 	
 	public static MyRectangle getRect(Color color) {
 		
-		MyRectangle rect = (MyRectangle)rectsByColor.get(color);
+		MyRectangle rect = rectsByColor.get(color);
 		
 		if (rect == null) { 
 			
@@ -48,3 +49,4 @@ public class RectFactory {
 	}
 	
 }
+

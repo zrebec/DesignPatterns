@@ -13,9 +13,7 @@ public class MyRectangle {
      *
      * @param color Color of rectangle
      */
-	public MyRectangle(Color color) {
-		this.color = color;
-	}
+	public MyRectangle(Color color) { this.color = color; }
 
 	/**
 	 * @param g      Graphics
@@ -24,10 +22,12 @@ public class MyRectangle {
 	 * @param lowerX End X coordinate of rectangle
 	 * @param lowerY End Y coordinate of rectangle
 	 */
+
 	public void draw(Graphics g, int upperX, int upperY, int lowerX, int lowerY) {
 		g.setColor(color);
 		g.fillRect(upperX, upperY, lowerX, lowerY);
 	}
+
 
 
 	/*
@@ -53,6 +53,7 @@ public class MyRectangle {
 		g.setColor(color);
 		g.fillRect(x, y, x2, y2);
 	}
-	*/
+	 */
+
 
 }
