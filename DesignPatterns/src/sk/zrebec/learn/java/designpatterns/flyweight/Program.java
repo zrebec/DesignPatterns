@@ -87,6 +87,9 @@ public class Program extends JFrame {
 			long memory = runtime.totalMemory() - runtime.freeMemory();
 			System.out.println("Used memory in byes: " + memory);
 			System.out.println("Used memory in megabytes: " + bytesToMegabytes(memory));
+			System.out.println("Total rectangle constructors: " + RectFactory.getRectangleConstructorCounter());
+			System.out.println("Total rectangles: " + RectFactory.getRectangleCounter());
+
 
 			//End time measuring and return result to output
 			System.out.println("This took " + (System.currentTimeMillis() - startTime) + " milliseconds");

@@ -33,19 +33,30 @@ import java.awt.Color;
 public class RectFactory {
 
 	private static final HashMap<Color, MyRectangle> rectsByColor = new HashMap<>();
+	private static int rectConstructorCounter = 0;
+	private static int rectCounter = 0;
 	
 	public static MyRectangle getRect(Color color) {
-		
+
+		rectCounter++;
 		MyRectangle rect = rectsByColor.get(color);
 		
 		if (rect == null) { 
-			
+			rectConstructorCounter++;
 			rect = new MyRectangle(color);
 			rectsByColor.put(color, rect);
 		}
 
 		return rect;
 		
+	}
+
+	public static int getRectangleConstructorCounter() {
+		return rectConstructorCounter;
+	}
+
+	public static int getRectangleCounter() {
+		return rectCounter;
 	}
 	
 }
