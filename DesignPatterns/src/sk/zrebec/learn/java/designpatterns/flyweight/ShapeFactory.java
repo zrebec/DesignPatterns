@@ -18,10 +18,10 @@ import java.awt.Color;
  * This can also speed up the application but this not primary
  * goal of FlyWeight design pattern.
  * 
- * In this case, we have HashMap with rectangles by color.
+ * In this case, we have HashMap with shapes by color.
  * If we doesn't have color as a key in HashMap, we create a new
- * instance of rectangle. Otherwise we get existing rectangle 
- * from HashMap and return it. Then only a dimensions of rectangle
+ * instance of shape. Otherwise we get existing shapess
+ * from HashMap and return it. Then only a dimensions of shape
  * will be created in draw method.
  * 
  * @author friskyfox
@@ -29,35 +29,33 @@ import java.awt.Color;
  *
  */
 
+public class ShapeFactory {
 
-public class RectFactory {
-
-	private static final HashMap<Color, MyRectangle> rectsByColor = new HashMap<>();
-	private static int rectConstructorCounter = 0;
-	private static int rectCounter = 0;
+	private static final HashMap<Color, MyShapeFlyWeight> shapeByColor = new HashMap<>();
+	private static int shapeConstructorCounter = 0;
+	private static int shapeCounter = 0;
 	
-	public static MyRectangle getRect(Color color) {
+	public static MyShapeFlyWeight getShape(Color color) {
 
-		rectCounter++;
-		MyRectangle rect = rectsByColor.get(color);
+		shapeCounter++;
+		MyShapeFlyWeight shape = shapeByColor.get(color);
 		
-		if (rect == null) { 
-			rectConstructorCounter++;
-			rect = new MyRectangle(color);
-			rectsByColor.put(color, rect);
+		if (shape == null) {
+			shapeConstructorCounter++;
+			shape = new MyShapeFlyWeight(color);
+			shapeByColor.put(color, shape);
 		}
 
-		return rect;
+		return shape;
 		
 	}
 
-	public static int getRectangleConstructorCounter() {
-		return rectConstructorCounter;
+	public static int getConstructorCounter() {
+		return shapeConstructorCounter;
 	}
 
-	public static int getRectangleCounter() {
-		return rectCounter;
+	public static int getCounter() {
+		return shapeCounter;
 	}
 	
 }
-

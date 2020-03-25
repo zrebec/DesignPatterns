@@ -11,27 +11,28 @@ public class Program extends JFrame {
 	/**
 	 * Variable declarations
 	 */
-	JButton startDrawing;
-	int windowWidth = 1750;
-	int windowHeight = 900;
-	Color[] shapeColor = { Color.ORANGE, Color.BLACK, Color.CYAN, Color.RED, Color.GREEN, Color.MAGENTA, Color.YELLOW, Color.PINK, Color.BLUE };
+	JButton startDrawingFlyWeight;
+	JButton startDrawingClassic;
+	int windowWidth = 800;
+	int windowHeight = 600;
+	Color[] shapeColor = { Color.ORANGE, Color.WHITE, Color.CYAN, Color.RED, Color.GREEN, Color.MAGENTA, Color.YELLOW, Color.PINK, Color.BLUE };
 	private static final long MEGABYTE = 1024L * 1024L;
+	private static final int shapeCount = 4_000_000;
 
-	public static long bytesToMegabytes(long bytes) {
-		return bytes / MEGABYTE;
+	public static double bytesToMegabytes(long bytes) {
+		return (double) bytes / MEGABYTE;
 	}
 	
 	public static void main(String[] args) {
-		
-		
+
 		new Program();
 
 	}
 	
 	/**
-	 * Constructor creates a 100000 of rectangles
+	 * Constructor creates a 100000 of shapes
 	 */
-	public Program() {
+	Program() {
 		
 		this.setSize(windowWidth, windowHeight);
 		this.setLocationRelativeTo(null);
@@ -42,67 +43,111 @@ public class Program extends JFrame {
 		contentPane.setLayout(new BorderLayout());
 
 		final JPanel drawingPanel = new JPanel();
+		final JPanel buttonPanel = new JPanel();
+		drawingPanel.setBackground(Color.BLACK);
 
-		startDrawing = new JButton("Draw rectangles");
+		startDrawingFlyWeight = new JButton("Draw Shapes FlyWeight");
+		startDrawingClassic = new JButton("Draw Shapes Classic");
+
+		buttonPanel.add(startDrawingFlyWeight, BorderLayout.WEST);
+		buttonPanel.add(startDrawingClassic, BorderLayout.NORTH);
 
 		contentPane.add(drawingPanel, BorderLayout.CENTER);
-		contentPane.add(startDrawing, BorderLayout.SOUTH);
+		contentPane.add(buttonPanel, BorderLayout.SOUTH);
 
-		startDrawing.addActionListener(e -> {
-
+		startDrawingFlyWeight.addActionListener(e -> {
+			System.out.println("Creating shapes with ShapeFactory");
+			drawingPanel.removeAll();
+			drawingPanel.revalidate();
+			drawingPanel.repaint();
 			Graphics g = drawingPanel.getGraphics();
 
-			//Start measuring time
-			long startTime = System.currentTimeMillis();
-			MyRectangle rect;
+			new Thread (() -> {
 
-			for (int i = 0; i < 4_000_000; i++) {
+				//Start measuring time
+				long startTime = System.currentTimeMillis();
 
-				/*
-				  This is classic method when we create a new instance of MyRectangle class
-				  every single time.
+				// Define the shape
+				MyShapeFlyWeight shape;
+				for (int i = 0; i < shapeCount; i++) {
 
-				  Please, keep this 2 lines and classic
-				  constructor commented in MyRectangle class and you will see that FlyWeight should
-				  be faster around 200 to 300% on average.
+					/*
+					  This is FlyWeight method when we create a new instance of shape only if
+					  color is changed. Otherwise just coordinates will be generated. Look at class
+					  FlyWeightFactory for look how it works.
+					 */
+					shape = ShapeFactory.getShape(getRandomColor());
+					shape.draw(g, getRandX(), getRandY());
 
-				 */
-				//rect = new MyRectangle(getRandomColor(), getRandX(), getRandY(), getRandX(), getRandY());
-				//rect.draw(g);
-					
-				/*
-				  This is FlyWeight method when we create a new instance of rectangle only if
-				  color is changed. Otherwise just coordinates will be generated. Look at class
-				  FlyWeightFactory for look how it works.
-				 */
-				rect = RectFactory.getRect(getRandomColor());
-				rect.draw(g, getRandX(), getRandY(), getRandX(), getRandY());
+				}
 
-			}
+				//Calculate memory consumption
+				Runtime runtime = Runtime.getRuntime();
+				runtime.gc();
 
-			//Calculate memory consumption
-			Runtime runtime = Runtime.getRuntime();
-			runtime.gc();
+				long memory = runtime.totalMemory() - runtime.freeMemory();
+				System.out.printf("Used memory: %d (%.02fMB) \n", memory, bytesToMegabytes(memory));
+				System.out.println("Total constructors: " + ShapeFactory.getConstructorCounter());
+				System.out.println("Total count: " + ShapeFactory.getCounter());
+				//End time measuring and return result to output
+				System.out.println("This took " + (System.currentTimeMillis() - startTime) + " milliseconds");
 
-			long memory = runtime.totalMemory() - runtime.freeMemory();
-			System.out.println("Used memory in byes: " + memory);
-			System.out.println("Used memory in megabytes: " + bytesToMegabytes(memory));
-			System.out.println("Total rectangle constructors: " + RectFactory.getRectangleConstructorCounter());
-			System.out.println("Total rectangles: " + RectFactory.getRectangleCounter());
-
-
-			//End time measuring and return result to output
-			System.out.println("This took " + (System.currentTimeMillis() - startTime) + " milliseconds");
+			}).start();
 
 		});
-		
+
+		startDrawingClassic.addActionListener(e -> {
+			System.out.println("Creating shapes by classic method");
+			drawingPanel.removeAll();
+			drawingPanel.revalidate();
+			drawingPanel.repaint();
+			Graphics g = drawingPanel.getGraphics();
+
+			new Thread (() -> {
+
+				//Start measuring time
+				long startTime = System.currentTimeMillis();
+
+				// Define the shape
+				MyShapeClassic shape;
+				for (int i = 0; i < shapeCount; i++) {
+
+					/*
+					  This is classic method when we create a new instance of MyShape class
+					  every single time.
+
+					  Please, keep this 2 lines and classic
+					  constructor commented in MyShape class and you will see that FlyWeight should
+					  be faster around 200 to 300% on average.
+
+					 */
+					shape = new MyShapeClassic(getRandomColor(), getRandX(), getRandY());
+					shape.draw(g);
+
+				}
+
+				//Calculate memory consumption
+				Runtime runtime = Runtime.getRuntime();
+				runtime.gc();
+
+				long memory = runtime.totalMemory() - runtime.freeMemory();
+				System.out.printf("Used memory: %d (%.02fMB) \n", memory, bytesToMegabytes(memory));
+				System.out.println("Total constructors: " + MyShapeClassic.getConstructorCounter());
+				System.out.println("Total count: " + MyShapeClassic.getCounter());
+				//End time measuring and return result to output
+				System.out.println("This took " + (System.currentTimeMillis() - startTime) + " milliseconds");
+
+			}).start();
+
+		});
+
 		this.add(contentPane);
 		this.setVisible(true);
 	}
 	
 	/**
-	 * This method returns color or rectangle
-	 * @return Color of rectangle
+	 * This method returns color or shape
+	 * @return Color of shape
 	 */
 	private Color getRandomColor()  {
 		Random rn = new Random();
