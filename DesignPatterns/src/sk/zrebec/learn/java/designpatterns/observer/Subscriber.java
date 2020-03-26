@@ -2,7 +2,7 @@ package sk.zrebec.learn.java.designpatterns.observer;
 
 public class Subscriber implements ISubscriber {
 
-    private String name;
+    private final String name;
     private Channel channel = new Channel();
 
     /**

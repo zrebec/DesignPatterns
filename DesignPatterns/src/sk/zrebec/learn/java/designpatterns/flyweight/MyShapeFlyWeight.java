@@ -5,8 +5,7 @@ import java.awt.Graphics;
 
 public class MyShapeFlyWeight {
 
-	private Color color;
-	//private int x, y;
+	final private Color color;
 
 	/**
      * FlyWeight constructor prepare shape much faster

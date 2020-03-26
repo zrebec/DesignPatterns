@@ -1,7 +1,7 @@
 package sk.zrebec.learn.java.designpatterns.observer;
 
 /**
- * This is Channel class interface. This class has 3 important methods likd add subscriber, notify all subscribers
+ * This is Channel class interface. This class has 3 important methods like add subscriber, notify all subscribers
  * and upload method. Looks to the description of each method.
  */
 
@@ -20,11 +20,6 @@ public interface IChannel {
      * @param sub Subscriber object
      */
     void unSubscribe(Subscriber sub);
-
-    /**
-     * Method to notify all subscribers. This method is called from upload method
-     */
-    void notifySubscribers();
 
     /**
      * This method is shall be called if you upload new video into your video provider

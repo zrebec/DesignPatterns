@@ -18,8 +18,7 @@ public class Channel implements IChannel {
         subs.remove(sub);
     }
 
-    @Override
-    public void notifySubscribers() {
+    private void notifySubscribers() {
         for (Subscriber sub : subs) {
             sub.update();
         }

@@ -6,7 +6,7 @@ package sk.zrebec.learn.java.designpatterns.adapter;
  */
 public class KyoceraPrinterAdapter implements IPrinterDriver {
 
-    KyoceraPrinter kyocera;
+    private final KyoceraPrinter kyocera;
 
     public KyoceraPrinterAdapter(KyoceraPrinter k) {
         kyocera = k;
