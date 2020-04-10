@@ -68,7 +68,7 @@ public class Program extends JFrame {
 				long startTime = System.currentTimeMillis();
 
 				// Define the shape
-				MyShapeFlyWeight shape;
+				Shape shape;
 				for (int i = 0; i < shapeCount; i++) {
 
 					/*

@@ -3,7 +3,7 @@ package sk.zrebec.learn.java.designpatterns.flyweight;
 import java.awt.Color;
 import java.awt.Graphics;
 
-public class MyShapeFlyWeight {
+public class Shape {
 
 	final private Color color;
 
@@ -12,7 +12,7 @@ public class MyShapeFlyWeight {
      *
      * @param color Color of shape
      */
-	public MyShapeFlyWeight(Color color) { this.color = color; }
+	public Shape(Color color) { this.color = color; }
 
 	/**
 	 * @param g      Graphics

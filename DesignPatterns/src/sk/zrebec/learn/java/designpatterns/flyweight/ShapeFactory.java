@@ -31,18 +31,18 @@ import java.awt.Color;
 
 public class ShapeFactory {
 
-	private static final HashMap<Color, MyShapeFlyWeight> shapeByColor = new HashMap<>();
+	private static final HashMap<Color, Shape> shapeByColor = new HashMap<>();
 	private static int shapeConstructorCounter = 0;
 	private static int shapeCounter = 0;
 	
-	public static MyShapeFlyWeight getShape(Color color) {
+	public static Shape getShape(Color color) {
 
 		shapeCounter++;
-		MyShapeFlyWeight shape = shapeByColor.get(color);
+		Shape shape = shapeByColor.get(color);
 		
 		if (shape == null) {
 			shapeConstructorCounter++;
-			shape = new MyShapeFlyWeight(color);
+			shape = new Shape(color);
 			shapeByColor.put(color, shape);
 		}
 
