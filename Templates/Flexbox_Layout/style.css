@@ -1,0 +1,267 @@
+/* ================================================================
+    START GLOBAL SETTINGS
+/* ===============================================================*/
+
+/*
+    Reset CSS. In real projects should use something like
+    html, body, h1, p, ul or more elements for set margin
+    and padding to zero. Wildcard is commonly not recommended
+    because wildcard is slow in CSS.
+*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* 
+    Just margins, paddings, borders between components 
+    for better readable. You can delete this section in
+    real projects 
+*/
+header, nav, article, aside, footer {
+    margin: 10px;
+    padding: 1.2em;
+    border-radius: 1.2em;
+}
+
+header h1 {
+    text-transform: uppercase;
+}
+
+h2 {
+    margin: 0 5pt 10pt 5pt;
+}
+
+article input {
+    margin: 20pt 10pt;
+    padding: 10pt;
+    border-radius: 1em;
+    min-width: 60%;
+    border: 2px solid black;
+}
+
+p {
+    padding: 5pt 0;
+    text-align: justify;
+}
+
+div {
+    width: 100%;
+    text-align: center;
+}
+
+.menu-button {
+    font-size: 1.2em;
+    font-weight: bold;
+    position: fixed;
+    top: 37px;
+    left: calc(100vw - 5em);
+    margin-right: 20pt;
+    cursor: pointer;
+    display: none;
+}
+
+.hint {
+    text-align: center;
+}
+
+button {
+    background-color: white;
+    margin: 10pt 5pt 5pt 5pt;
+    padding: 5pt;
+    min-width: 60pt;
+    min-height: 30pt;
+    border-radius: 0.9em;
+    border: 0;
+}
+
+button:hover {
+    cursor: pointer;
+    background-color: chartreuse;
+}
+
+#menu-checkbox {
+    display: none;
+}
+
+/* ================================================================
+    END GLOBAL SETTINGS
+/* ===============================================================*/
+
+/* ================================================================
+    START COLORS SETTINGS
+/* ===============================================================*/
+
+ /*
+    Added complementary color scheme to elements.
+    In real projects you can delete this or edit to
+    colors  what you like
+*/
+header {background-color: #ff8636;}
+nav {background-color: #3686ff;}
+article {background-color: #d3cfff;}
+aside {background-color: #d336ff;}
+footer {background-color: #ffeb36;}
+
+/* ================================================================
+    END COLORS SETTINGS
+/* ===============================================================*/
+
+
+/* ================================================================
+    START MOBILE SETTINGS
+/* ===============================================================*/
+
+/* ================================================================
+    START NAVIGATION SETTINGS
+/* ===============================================================*/
+
+/* 
+    This is navigation list settings. We don't want any list style
+    types and white text color for links (anchors).without underline
+    in default. Underlined will be after mouse pointer over.
+*/
+nav ul {
+    list-style-type: none;
+}
+
+nav li {
+    display: inline-block;
+    padding-right: 10pt;
+    padding: 10px;
+}
+
+nav li:hover {
+    background-color: black;
+    border-radius: 1em;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+/* ================================================================
+    END NAVIGATION SETTINGS
+/* ===============================================================*/
+
+/* ================================================================
+    START FLEX SETTINGS
+/* ===============================================================*/
+
+/* 
+    We want set flexbox model  to all  elements under main elements.
+    We can assume that header and footer will be always 100% width 
+    and header will be always on top and footer always in bottom.
+*/
+main {
+    display: flex;
+    /* 
+        This causes that we will using column flex elements ordering and
+        wrapping it if they never will wrap
+    */
+    flex-flow: column nowrap;
+}
+
+/* 
+    If you want center some shorter content, it must be flex too
+*/
+/*
+article, nav {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+}
+*/
+
+/* ================================================================
+    END FLEX SETTINGS
+/* ===============================================================*/
+
+/* ================================================================
+    END MOBILE SETTINGS
+/* ===============================================================*/
+
+/* ================================================================
+    BEGIN DESKTOP SETTINGS
+/* ===============================================================*/
+
+/* 
+    This was settings for classic mobile device. Now we can set up
+    for desktop (display at least 1024px width}
+*/
+
+@media only screen and (min-width: 1024px) {
+    /* 
+        This causes that we will using row flex elements ordering and
+        wrapping it if they will not fit into one row
+    */
+    main {
+        flex-flow: row wrap;
+    }
+
+    /*
+        Navigation we want item by item in one column and more rows
+        This also define us that our nav will have fixed size
+    */
+    nav li {
+        display: block;
+        width: 18em;
+    }
+
+    main > article {
+        /* Article will be 3 times larger than base size (aside e.g.) */
+        flex: 3;
+    }
+
+    main > aside {
+        /* Aside block has base size */
+        flex: 1;
+    }
+
+}
+
+/* ================================================================
+    END DESKTOP SETTINGS
+/* ===============================================================*/
+
+
+@media only screen and (max-width: 910px) {
+    
+    .menu-button {
+        display: block;
+    }
+
+    nav {
+        height: 0px;
+        border: 0;
+        padding: 0;
+        margin: 0;
+    }
+
+    nav ul {
+        border-radius: 0.5em;
+        background: rgba(0, 0, 0, 0.92);
+        position: fixed;
+        top: 100px;
+        left: -100%;
+        width: calc(100% - 15pt);
+        height: calc(100vh - 10vh);
+        text-align: center;
+        transition: all .5s;
+    }
+
+    nav li {
+        display: block;
+    }
+
+    #menu-checkbox:checked ~ ul  {
+        left: 10px;
+    }
+}
