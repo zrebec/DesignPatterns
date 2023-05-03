@@ -17,6 +17,7 @@ public class DesignPatterns {
                 System.out.println("3 - Flyweight");
                 System.out.println("4 - Observer");
                 System.out.println("5 - Prototype");
+                System.out.println("6 - Factory");
                 System.out.println("0 - Exit");
                 Scanner input = new Scanner(System.in);
                 inputValue = input.nextInt();
@@ -26,6 +27,7 @@ public class DesignPatterns {
                     case 3 -> sk.zrebec.learn.java.designpatterns.flyweight.Program.main(args);
                     case 4 -> sk.zrebec.learn.java.designpatterns.observer.Program.main(args);
                     case 5 -> sk.zrebec.learn.java.designpatterns.prototype.Program.main(args);
+                    case 6 -> sk.zrebec.learn.java.designpatterns.factory.Program.main(args);
                     case 0 -> System.out.println("Exit the program");
                 }
             } catch (InputMismatchException e) {
