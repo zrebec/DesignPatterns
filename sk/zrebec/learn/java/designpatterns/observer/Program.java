@@ -38,15 +38,16 @@ public class Program {
           we have just one cycle, and we can add actual subscriber to channel
          */
 
-        /*
+
+          /*
           Subscribe all subscribers from ArrayList
           subs.forEach(sub -> javaLearning.subscribe(sub));
-
           Add all subscribers into channel
           subs.forEach(sub -> sub.subscribeChannel(javaLearning));
-        */
+           Upload new video
+          */
 
-        // Upload new video
+
         javaLearning.upload("How to use Observer design pattern in Java");
 
     }

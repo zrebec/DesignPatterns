@@ -2,6 +2,7 @@ package sk.zrebec.learn.java.designpatterns.singleton;
 
 import java.util.Date;
 import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 /**
  * This class is a sample of singleton class implementation.
@@ -32,13 +33,15 @@ public class Singleton {
 	private static Singleton singletonInstance = null;
 	private int singletonNumber;
 
+	private static class LazyHolder {
+		private static final Singleton INSTANCE = new Singleton();
+	}
+
 
 	//This is Singleton constructor. It must be private and return value
 	private Singleton() {
-		Random seed = new Random(new Date().getTime());
-
-		// This causes that 0 never will be returned
-		singletonNumber = seed.nextInt(50 - 1) + 1;
+		// Using ThreadLocalRandom to generate random number in a simpler way
+		singletonNumber = ThreadLocalRandom.current().nextInt(1, 51);
 	}
 
 	/**
@@ -46,17 +49,7 @@ public class Singleton {
 	 * @return instance of singleton
 	 */
 	public static Singleton getSingletonInstance() {
-
-
-		//If singleton was never used before, that means it is still null, we can initialise it here
-		if (singletonInstance == null) {
-			singletonInstance = new Singleton();
-		}
-		
-		/*
-		  Otherwise it returns the same instance
-		 */
-		return singletonInstance;
+		return LazyHolder.INSTANCE;
 	}
 	
 	/**
