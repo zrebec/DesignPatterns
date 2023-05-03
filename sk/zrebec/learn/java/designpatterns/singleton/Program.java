@@ -31,21 +31,6 @@ public class Program {
 		System.out.println(number3.getSingletonRandomNumber());
 		System.out.println(number4.getSingletonRandomNumber());
 
-		//TODO Optimize this. We don't need to use do/while. I want most effective repeating value until valid Try remove try/catch block
-		int milkValue;
-		do {
-			try {
-				System.out.println("How many milliliters of milk?");
-				Scanner input = new Scanner(System.in);
-				milkValue = input.nextInt();
-				System.out.printf("Milliliters of milk: %d%n", milkValue);
-			} catch (InputMismatchException e) {
-				System.out.println("This is not valid number");
-				milkValue = 0;
-			}
-		} while (milkValue <= 0);
-
-
 		System.out.println("Done");
 
 

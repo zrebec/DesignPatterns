@@ -35,14 +35,15 @@ public class Program {
         /*
           This is lambda method, but in this case is used for as example to use lambda expressions in Java
           In fact, classic for method is most effective here because here we are 2 cycles and above (uncommented section)
-          we have just one cycle and we can add actual subscriber to channel
+          we have just one cycle, and we can add actual subscriber to channel
          */
-        /*
-        // Subscribe all subscribers from ArrayList
-        subs.forEach(sub -> javaLearning.subscribe(sub));
 
-        // Add all subscribers into channel
-        subs.forEach(sub -> sub.subscribeChannel(javaLearning));
+        /*
+          Subscribe all subscribers from ArrayList
+          subs.forEach(sub -> javaLearning.subscribe(sub));
+
+          Add all subscribers into channel
+          subs.forEach(sub -> sub.subscribeChannel(javaLearning));
         */
 
         // Upload new video
