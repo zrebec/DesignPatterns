@@ -24,14 +24,14 @@ import java.util.concurrent.ThreadLocalRandom;
  *        Then you must remove initialisation on Singleton in getInstance method
  *
  * @author friskyfox
- * @version 1.0
+ * @version 1.2
  *
  */
 
 public class Singleton {
 
-	private static Singleton singletonInstance = null;
-	private int singletonNumber;
+	final private static Singleton singletonInstance = null;
+	final private int singletonNumber;
 
 	private static class LazyHolder {
 		private static final Singleton INSTANCE = new Singleton();
