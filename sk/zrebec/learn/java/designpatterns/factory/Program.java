@@ -86,7 +86,6 @@ public class Program {
 		} else {
 			System.out.println("Great! Your gets safe point! YOU ARE WINNER");
 		}
-		userInput.close();
 	}
 	
 	public static double doStuffEnemy(Enemy anEnemy) {
