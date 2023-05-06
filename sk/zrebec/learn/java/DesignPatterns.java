@@ -1,6 +1,5 @@
 package sk.zrebec.learn.java;
 
-import java.sql.Array;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -34,6 +33,8 @@ public class DesignPatterns {
                 }
             } catch (InputMismatchException e) {
                 System.out.println("Invalid input parameter");
+            } catch (Exception e) {
+                throw new RuntimeException(e);
             }
         } while (inputValue != 0);
     }
